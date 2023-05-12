@@ -60,4 +60,17 @@ class LinkedList
     @head.update_next(holder)
     data
   end
+
+  def insert(index, data)
+    node = @head
+    
+    (index-1).times do
+      node = node.next_node
+    end
+
+    new_node = Node.new(data)
+    new_node.update_next(node.next_node)
+    node.update_next(new_node)
+    data
+  end
 end
