@@ -95,17 +95,11 @@ class LinkedList
     false if @head.nil?
 
     node = @head
-    loop do
-      if node.data == data
-        break
-      elsif node.next_node.nil?
-        break
-      else
-        node = node.next_node
-      end
+
+    until node.next_node.nil? || node.data == data
+      node = node.next_node
     end
 
     node.data == data ? true : false
-
   end
 end
