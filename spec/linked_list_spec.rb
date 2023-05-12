@@ -40,8 +40,19 @@ describe LinkedList do
   it "can return data of the head node" do
     list = LinkedList.new
     list.append("doop")
+    
+    expect(list.to_string).to eq("doop")
+  end
+  
+  it "can append multiple nodes" do
+    list = LinkedList.new
+    list.append("doop")
 
-    expect(list.string).to eq("doop")
+    expect(list.head.next_node).to be nil
+
+    list.append("deep")
+
+    expect(list.head.next_node).to be_a(Node)
   end
 end
 
