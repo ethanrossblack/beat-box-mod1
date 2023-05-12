@@ -36,5 +36,12 @@ describe LinkedList do
   
     expect(list.count).to eq(1)
   end
+  
+  it "can return data of the head node" do
+    list = LinkedList.new
+    list.append("doop")
+
+    expect(list.string).to eq("doop")
+  end
 end
 
