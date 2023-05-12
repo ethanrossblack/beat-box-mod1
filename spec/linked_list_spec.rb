@@ -54,5 +54,16 @@ describe LinkedList do
 
     expect(list.head.next_node).to be_a(Node)
   end
+
+  it "can count multiple nodes" do
+    list = LinkedList.new
+    list.append("doop")
+
+    expect(list.count).to eq(1)
+
+    list.append("deep")
+
+    expect(list.count).to eq(2)
+  end
 end
 
