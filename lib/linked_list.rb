@@ -16,6 +16,7 @@ class LinkedList
     else
       find_tail.update_next(node)
     end
+    data
   end
 
   def find_tail
@@ -51,5 +52,12 @@ class LinkedList
       node = node.next_node
     end
     string
+  end
+
+  def prepend(data)
+    holder = @head
+    @head = Node.new(data)
+    @head.update_next(holder)
+    data
   end
 end
