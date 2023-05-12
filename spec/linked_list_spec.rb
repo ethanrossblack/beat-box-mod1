@@ -6,9 +6,14 @@ describe LinkedList do
 
   it "exists" do
     list = LinkedList.new
-
+    
     expect(list).to be_a(LinkedList)
   end
+  
+  it "starts with an empty @head" do
+    list = LinkedList.new
 
+    expect(list.head).to be nil
+  end
 end
 
