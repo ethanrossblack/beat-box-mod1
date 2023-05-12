@@ -6,7 +6,24 @@ class LinkedList
   end
 
   def append(data)
-    @head = Node.new(data)
+    # Safety clause for non-string data
+    return if !data.is_a?(String)
+
+    node = Node.new(data)
+
+    if @head == nil
+      @head = node
+    else
+      find_tail.update_next(node)
+    end
+  end
+
+  def find_tail
+    node = @head
+    until node.next_node == nil
+      node = node.next_node
+    end
+    node
   end
 
   def count
