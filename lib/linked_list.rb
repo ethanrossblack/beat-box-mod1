@@ -16,4 +16,10 @@ class LinkedList
       0
     end
   end
+
+  def to_string
+    if @head
+      @head.data
+    end
+  end
 end
