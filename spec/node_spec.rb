@@ -21,5 +21,4 @@ describe Node do
     expect(node.next_node).to be nil
   end
 
-
 end
