@@ -102,4 +102,17 @@ class LinkedList
 
     node.data == data ? true : false
   end
+
+  def pop
+    return if @head.nil?
+    @head = nil if @head.next_node.nil?
+    
+    node = @head
+    until node.next_node.next_node.nil?
+      node = node.next_node
+    end
+    popped = node.next_node
+    node.update_next(nil)
+    popped
+  end
 end
