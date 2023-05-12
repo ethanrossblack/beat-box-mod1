@@ -19,6 +19,9 @@ class LinkedList
   end
 
   def find_tail
+    # Safety clause for an empty head
+    return if @head == nil
+    
     node = @head
     until node.next_node == nil
       node = node.next_node
