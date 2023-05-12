@@ -85,4 +85,15 @@ describe LinkedList do
     expect(list.head.data).to eq("dop")
     expect(list.head.next_node.data).to eq("plop")
   end
+
+  it "can insert a node into a given position on the list" do
+    list = LinkedList.new
+    list.append("plop")
+    list.append("suu")
+    list.prepend("dop")
+    expect(list.to_string).to eq("dop plop suu")
+
+    list.insert(1, "woo")
+    expect(list.to_string).to eq("dop woo plop suu")
+  end
 end
