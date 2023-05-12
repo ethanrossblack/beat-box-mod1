@@ -107,5 +107,6 @@ describe LinkedList do
 
     expect(list.find(2,1)).to eq("shi")
     expect(list.find(1,3)).to eq("woo shi shu")
+    expect(list.find(0,5)).to eq("deep woo shi shu blop")
   end
 end

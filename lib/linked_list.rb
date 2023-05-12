@@ -73,4 +73,21 @@ class LinkedList
     node.update_next(new_node)
     data
   end
+
+  def find(index, nodes)
+    return if nodes == 0
+
+    node = @head
+    index.times do
+      node = node.next_node
+    end
+
+    found = node.data
+    (nodes-1).times do
+      node = node.next_node
+      found += " #{node.data}"
+    end
+
+    found
+  end
 end
