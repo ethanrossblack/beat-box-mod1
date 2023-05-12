@@ -11,7 +11,7 @@ class LinkedList
 
     node = Node.new(data)
 
-    if @head == nil
+    if @head.nil?
       @head = node
     else
       find_tail.update_next(node)
@@ -20,21 +20,21 @@ class LinkedList
 
   def find_tail
     # Safety clause for an empty head
-    return if @head == nil
+    return if @head.nil?
     
     node = @head
-    until node.next_node == nil
+    until node.next_node.nil?
       node = node.next_node
     end
     node
   end
 
   def count
-    0 if @head == nil
+    0 if @head.nil?
     
     counter = 1
     node = @head
-    until node.next_node == nil
+    until node.next_node.nil?
       counter += 1
       node = node.next_node
     end
