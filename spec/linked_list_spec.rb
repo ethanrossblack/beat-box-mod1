@@ -22,5 +22,13 @@ describe LinkedList do
 
     expect(list.head).to be_a(Node)
   end
+  
+  it "doesn't lead to a next node with only one node" do
+    list = LinkedList.new
+    list.append("doop")
+  
+    expect(list.head.next_node).to be nil
+  end
+
 end
 
