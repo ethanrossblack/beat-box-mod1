@@ -82,5 +82,7 @@ describe LinkedList do
 
     list.prepend("dop")
     expect(list.to_string).to eq("dop plop suu")
+    expect(list.head.data).to eq("dop")
+    expect(list.head.next_node.data).to eq("plop")
   end
 end
