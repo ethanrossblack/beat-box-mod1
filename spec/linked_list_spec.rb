@@ -29,6 +29,12 @@ describe LinkedList do
   
     expect(list.head.next_node).to be nil
   end
-
+  
+  it "can count one node" do
+    list = LinkedList.new
+    list.append("doop")
+  
+    expect(list.count).to eq(1)
+  end
 end
 
