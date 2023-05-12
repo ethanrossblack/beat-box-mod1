@@ -90,4 +90,22 @@ class LinkedList
 
     found
   end
+
+  def includes?(data)
+    false if @head.nil?
+
+    node = @head
+    loop do
+      if node.data == data
+        break
+      elsif node.next_node.nil?
+        break
+      else
+        node = node.next_node
+      end
+    end
+
+    node.data == data ? true : false
+
+  end
 end
