@@ -81,4 +81,10 @@ describe BeatBox do
     
     expect(bb.rate).to eq(100)
   end
+
+  it "has a default voice of Boing" do
+    bb = BeatBox.new("deep dop dop deep")
+
+    expect(bb.voice).to eq("Boing")
+  end
 end
