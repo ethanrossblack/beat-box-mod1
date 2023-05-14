@@ -1,5 +1,5 @@
 class BeatBox
-  attr_reader :list
+  attr_reader :list, :valid_beats
 
   def initialize(data = nil)
     @list = LinkedList.new
