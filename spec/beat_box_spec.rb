@@ -74,4 +74,11 @@ describe BeatBox do
 
     expect(bb.rate).to eq(500)
   end
+  
+  it "can change playback rate" do
+    bb = BeatBox.new("deep dop dop deep")
+    bb.rate = 100
+    
+    expect(bb.rate).to eq(100)
+  end
 end
