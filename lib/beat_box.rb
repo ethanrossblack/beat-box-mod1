@@ -1,9 +1,11 @@
 class BeatBox
   attr_reader :list, :valid_beats
+  attr_accessor :rate
 
   def initialize(data = nil)
     @list = LinkedList.new
     @valid_beats = %w[tee dee deep bop boop la na doo ditt woo hoo shu]
+    @rate = 500
     self.append(data)
   end
 
