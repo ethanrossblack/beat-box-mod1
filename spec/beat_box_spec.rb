@@ -48,4 +48,10 @@ describe BeatBox do
 
     expect(bb.count).to eq(1)
   end
+
+  it "can return all current beats" do
+    bb = BeatBox.new("deep")
+
+    expect(bb.all).to eq("deep")
+  end
 end
