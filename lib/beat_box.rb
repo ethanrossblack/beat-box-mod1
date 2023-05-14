@@ -32,4 +32,13 @@ class BeatBox
   def validate_beat(beat)
     @valid_beats.include?(beat)
   end
+
+  def prepend(data)
+    return unless data.is_a?(String)
+
+    beats = data.split(" ")
+    beats.each do |beat|
+      @list.prepend(beat) if validate_beat(beat)
+    end
+  end
 end
