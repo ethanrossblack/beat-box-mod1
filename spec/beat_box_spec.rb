@@ -16,4 +16,12 @@ describe BeatBox do
     expect(bb.list).to be_a(LinkedList)
     expect(bb.list.head).to be nil
   end
+
+  it "can append multiple nodes at a time" do
+    bb = BeatBox.new
+    bb.append("deep doo ditt")
+
+    expect(list.head.data).to eq("deep")
+    expect(list.head.next_node.data).to eq("doo")
+  end
 end
