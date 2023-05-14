@@ -68,4 +68,10 @@ describe BeatBox do
 
     expect(bb.all).to eq("tee tee tee deep")
   end
+
+  it "has a default playback rate of 500" do
+    bb = BeatBox.new("deep dop dop deep")
+
+    expect(bb.rate).to eq(500)
+  end
 end
