@@ -42,4 +42,10 @@ describe BeatBox do
 
     expect(bb.play).to eq(3)
   end
+
+  it "can add beats on initialization" do
+    bb = BeatBox.new("deep")
+
+    expect(bb.count).to eq(1)
+  end
 end
