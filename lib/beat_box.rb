@@ -12,10 +12,14 @@ class BeatBox
     beats.each do |beat|
       @list.append(beat)
     end
-    data
   end
 
   def count
     @list.count
+  end
+
+  def play
+    `say -r 500 -v Boing #{@list.to_string}`
+    puts "# plays the sounds #{@list.to_string}"
   end
 end
