@@ -87,4 +87,11 @@ describe BeatBox do
 
     expect(bb.voice).to eq("Boing")
   end
+  
+  it "can change voices" do
+    bb = BeatBox.new("deep dop dop deep")
+    bb.voice = "Daniel"
+
+    expect(bb.voice).to eq("Daniel")
+  end
 end
