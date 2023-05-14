@@ -20,6 +20,5 @@ class BeatBox
 
   def play
     `say -r 500 -v Boing #{@list.to_string}`
-    puts "# plays the sounds #{@list.to_string}"
   end
 end
