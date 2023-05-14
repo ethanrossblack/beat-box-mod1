@@ -6,8 +6,8 @@ class LinkedList
   end
 
   def append(data)
-    # Safety clause for non-string data
-    return if !data.is_a?(String)
+    # Guard clause for non-string data
+    return unless data.is_a?(String)
 
     node = Node.new(data)
 
