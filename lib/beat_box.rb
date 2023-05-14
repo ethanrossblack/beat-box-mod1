@@ -3,6 +3,7 @@ class BeatBox
 
   def initialize(data = nil)
     @list = LinkedList.new
+    @valid_beats = %w[tee dee deep bop boop la na doo ditt woo hoo shu]
     self.append(data)
   end
 
