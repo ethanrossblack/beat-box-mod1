@@ -12,7 +12,7 @@ class BeatBox
 
     beats = data.split(" ")
     beats.each do |beat|
-      @list.append(beat)
+      @list.append(beat) if validate_beat(beat)
     end
   end
 
