@@ -24,7 +24,7 @@ class BeatBox
   end
 
   def play
-    `say -r 500 -v Boing #{@list.to_string}`
+    `say -r #{@rate} -v #{@voice} #{all}`
     count
   end
 
