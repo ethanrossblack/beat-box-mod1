@@ -94,4 +94,15 @@ describe BeatBox do
 
     expect(bb.voice).to eq("Daniel")
   end
+
+  it "can reset the playback rate" do
+    bb = BeatBox.new("deep dop dop deep")
+    bb.rate = 100
+    
+    expect(bb.rate).to eq(100)
+    
+    bb.reset_rate
+    
+    expect(bb.rate).to eq(500)
+  end
 end
