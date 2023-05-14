@@ -24,4 +24,15 @@ describe BeatBox do
     expect(bb.list.head.data).to eq("deep")
     expect(bb.list.head.next_node.data).to eq("doo")
   end
+
+  it "can count the number of nodes" do
+    bb = BeatBox.new
+    bb.append("deep doo ditt")
+
+    expect(bb.count).to eq(3)
+
+    bb.append("woo hoo shu")
+
+    expect(bb.count).to eq(6)
+  end
 end
