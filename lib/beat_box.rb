@@ -23,4 +23,8 @@ class BeatBox
     `say -r 500 -v Boing #{@list.to_string}`
     count
   end
+
+  def all
+    @list.to_string
+  end
 end
