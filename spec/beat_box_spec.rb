@@ -61,4 +61,11 @@ describe BeatBox do
 
     expect(bb.all).to eq("deep")
   end
+
+  it "can prepend beats" do
+    bb = BeatBox.new("deep")
+    bb.prepend("tee tee tee")
+
+    expect(bb.all).to eq("tee tee tee deep")
+  end
 end
