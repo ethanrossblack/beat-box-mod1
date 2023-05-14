@@ -54,4 +54,11 @@ describe BeatBox do
 
     expect(bb.all).to eq("deep")
   end
+
+  it "can validate beats" do
+    bb = BeatBox.new("deep")
+    bb.append("Mississippi")
+
+    expect(bb.all).to eq("deep")
+  end
 end
