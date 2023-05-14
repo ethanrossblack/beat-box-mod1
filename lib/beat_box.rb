@@ -44,4 +44,8 @@ class BeatBox
       @list.prepend(beat) if validate_beat(beat)
     end
   end
+
+  def reset_rate
+    @rate = 500
+  end
 end
