@@ -42,4 +42,78 @@ describe BeatBox do
 
     expect(bb.play).to eq(3)
   end
+
+  it "can add beats on initialization" do
+    bb = BeatBox.new("deep")
+
+    expect(bb.count).to eq(1)
+  end
+
+  it "can return all current beats" do
+    bb = BeatBox.new("deep")
+
+    expect(bb.all).to eq("deep")
+  end
+
+  it "can validate beats" do
+    bb = BeatBox.new("deep")
+    bb.append("Mississippi")
+
+    expect(bb.all).to eq("deep")
+  end
+
+  it "can prepend beats" do
+    bb = BeatBox.new("deep")
+    bb.prepend("tee tee tee")
+
+    expect(bb.all).to eq("tee tee tee deep")
+  end
+
+  it "has a default playback rate of 500" do
+    bb = BeatBox.new("deep dop dop deep")
+
+    expect(bb.rate).to eq(500)
+  end
+  
+  it "can change playback rate" do
+    bb = BeatBox.new("deep dop dop deep")
+    bb.rate = 100
+    
+    expect(bb.rate).to eq(100)
+  end
+
+  it "has a default voice of Boing" do
+    bb = BeatBox.new("deep dop dop deep")
+
+    expect(bb.voice).to eq("Boing")
+  end
+  
+  it "can change voices" do
+    bb = BeatBox.new("deep dop dop deep")
+    bb.voice = "Daniel"
+
+    expect(bb.voice).to eq("Daniel")
+  end
+  
+  it "can reset the playback rate" do
+    bb = BeatBox.new("deep dop dop deep")
+    bb.rate = 100
+    
+    expect(bb.rate).to eq(100)
+    
+    bb.reset_rate
+    
+    expect(bb.rate).to eq(500)
+  end
+
+  it "can reset the voice" do
+    bb = BeatBox.new("deep dop dop deep")
+    bb.voice = "Daniel"
+  
+    expect(bb.voice).to eq("Daniel")
+
+    bb.reset_voice
+
+    expect(bb.voice).to eq("Boing")
+  end
 end
