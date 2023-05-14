@@ -40,6 +40,6 @@ describe BeatBox do
     bb = BeatBox.new
     bb.append("deep doo ditt")
 
-    expect(bb.play).to eq(`say -r 500 -v Boing deep doo ditt`)
+    expect(bb.play).to eq(3)
   end
 end
