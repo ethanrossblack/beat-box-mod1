@@ -28,4 +28,8 @@ class BeatBox
   def all
     @list.to_string
   end
+
+  def validate_beat(beat)
+    @valid_beats.include?(beat)
+  end
 end
