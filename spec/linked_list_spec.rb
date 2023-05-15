@@ -124,7 +124,6 @@ describe LinkedList do
 
   it "can remove the last element from the list" do
     list = LinkedList.new
-    list.append("deep")
     list.append("woo")
     list.append("shi")
     list.append("shu")
@@ -132,6 +131,15 @@ describe LinkedList do
     list.pop
     list.pop
 
-    expect(list.to_string).to eq("deep woo shi")
+    expect(list.to_string).to eq("woo shi")
+  end
+
+  it "can pop a 1 node long list" do
+    list = LinkedList.new
+    list.append("woo")
+
+    expect(list.count).to eq(1)
+    list.pop
+    expect(list.count).to eq(0)
   end
 end

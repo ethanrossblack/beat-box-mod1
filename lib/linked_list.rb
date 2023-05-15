@@ -6,8 +6,8 @@ class LinkedList
   end
 
   def append(data)
-    # Safety clause for non-string data
-    return if !data.is_a?(String)
+    # Guard clause for non-string data
+    return unless data.is_a?(String)
 
     node = Node.new(data)
 
@@ -31,15 +31,17 @@ class LinkedList
   end
 
   def count
-    0 if @head.nil?
-    
-    counter = 1
-    node = @head
-    until node.next_node.nil?
-      counter += 1
-      node = node.next_node
+    if @head.nil?
+      0
+    else
+      counter = 1
+      node = @head
+      until node.next_node.nil?
+        counter += 1
+        node = node.next_node
+      end
+      counter
     end
-    counter
   end
 
   def to_string
@@ -105,14 +107,23 @@ class LinkedList
 
   def pop
     return if @head.nil?
-    @head = nil if @head.next_node.nil?
-    
-    node = @head
-    until node.next_node.next_node.nil?
-      node = node.next_node
+
+    popped = @head
+
+    if @head.next_node.nil?
+      @head = nil
+      popped
+    else
+      node = @head
+
+      until node.next_node.next_node.nil?
+        node = node.next_node
+      end
+
+      popped = node.next_node
+      node.update_next(nil)
+      
+      popped
     end
-    popped = node.next_node
-    node.update_next(nil)
-    popped
   end
 end
