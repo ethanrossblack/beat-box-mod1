@@ -8,43 +8,98 @@ describe BeatBox do
     @bb = BeatBox.new
   end
 
-  it "exists" do
-    @expect(bb).to be_a(BeatBox)
+  context "#initialize" do
+    it "exists" do
+      expect(@bb).to be_a(BeatBox)
+    end
+
+    it "initializes an empty LinkedList by default" do
+      expect(@bb.list).to be_a(LinkedList)
+      expect(@bb.list.head).to be nil
+    end
+
+    it "can initialize with a single beat" do
+      @bb = BeatBox.new("deep")
+  
+      expect(@bb.count).to eq(1)
+    end
+
+    it "can initlaize with multiple beats" do
+      @bb = BeatBox.new("deep doo")
+  
+      expect(@bb.count).to eq(2)
+    end
   end
 
-  it "creates an empty LinkedList item on initialization" do
-    expect(@bb.list).to be_a(LinkedList)
-    expect(@bb.list.head).to be nil
-  end
-
-  it "can append multiple nodes at a time" do
-    @bb.append("deep doo ditt")
+  context "#append" do
+    it "can append a single beat" do
+      @bb.append("deep")
+      
+      expect(@bb.list.head.data).to eq("deep")
+      expect(@bb.list.head.next_node).to be nil
+      expect(@bb.count).to eq(1)
+      expect(@bb.all).to eq("deep")
+    end
     
-    expect(@bb.list.head.data).to eq("deep")
-    expect(@bb.list.head.next_node.data).to eq("doo")
+    it "can append multiple beats at once" do
+      @bb.append("deep doo ditt")
+      
+      expect(@bb.list.head.data).to eq("deep")
+      expect(@bb.list.head.next_node.data).to eq("doo")
+      expect(@bb.count).to eq(3)
+      expect(@bb.all).to eq("deep doo ditt")
+    end
+
+    it "will only append beats from a String" do
+      @bb.append(:deep)
+
+      expect(@bb.list.head).to be nil
+      expect(@bb.count).to eq(0)
+    end
   end
 
-  it "can count the number of nodes" do
-    @bb.append("deep doo ditt")
+  context "#count" do
+    it "can count the number of nodes" do
+      @bb.append("deep doo ditt")
 
-    expect(@bb.count).to eq(3)
+      expect(@bb.count).to eq(3)
 
-    @bb.append("woo hoo shu")
+      @bb.append("woo hoo shu")
 
-    expect(@bb.count).to eq(6)
+      expect(@bb.count).to eq(6)
+    end
+
+    it "can count an empty LinkedList" do
+      expect(@bb.count).to eq(0)
+    end
+    
+    it "can count a single node" do
+      @bb.append("deep")
+
+      expect(@bb.count).to eq(1)
+    end
   end
 
-  it "can play beats" do
-    @bb.append("deep doo ditt")
+  context "#play" do
+    it "can play beat sounds and not raise an error" do
+      expect { @bb.play }.not_to raise_error
+      
+      @bb.append("deep doo ditt")
+      
+      expect { @bb.play }.not_to raise_error
+    end
 
-    expect(@bb.play).to eq(3)
+    it "will not play an empty LinkedList" do
+      expect(@bb.play).to be nil
+    end
+
+    it "can play a multiple beats" do
+      @bb.append("deep doo ditt")
+
+      expect(@bb.play).to eq(3)
+    end
   end
-
-  it "can add beats on initialization" do
-    bb = BeatBox.new("deep")
-
-    expect(bb.count).to eq(1)
-  end
+  
 
   it "can return all current beats" do
     bb = BeatBox.new("deep")
@@ -79,7 +134,7 @@ describe BeatBox do
     expect(bb.rate).to eq(100)
   end
 
-  it "has a default voice of Boing" do
+  it "uses Boing as a default voice" do
     bb = BeatBox.new("deep dop dop deep")
 
     expect(bb.voice).to eq("Boing")
