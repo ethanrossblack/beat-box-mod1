@@ -24,6 +24,7 @@ class BeatBox
   end
 
   def play
+    return if @list.head.nil?
     `say -r #{@rate} -v #{@voice} #{all}`
     count
   end
