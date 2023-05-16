@@ -100,72 +100,105 @@ describe BeatBox do
     end
   end
   
+  context "#all" do
+    it "can return a string of current beats" do
+      @bb.append("deep doo ditt")
 
-  it "can return all current beats" do
-    bb = BeatBox.new("deep")
+      expect(@bb.all).to eq("deep doo ditt")
+    end
 
-    expect(bb.all).to eq("deep")
+    it "can return a string of a single beat" do
+      @bb.append("deep")
+      
+      expect(@bb.all).to eq("deep")
+    end
+
+    it "will return nothing for an empty LinkedList" do
+      expect(@bb.all).to be nil
+    end
   end
 
-  it "can validate beats" do
-    bb = BeatBox.new("deep")
-    bb.append("Mississippi")
+  context "#validate_beats" do
+    it "has a list of valid beats" do
+      expect(@bb.valid_beats).to eq(%w[tee dee deep bop boop la na doo ditt woo hoo shu])
+    end
 
-    expect(bb.all).to eq("deep")
+    it "can validate a beat" do
+      expect(@bb.validate_beat("deep")).to be true
+      expect(@bb.validate_beat("Mississippi")).to be false
+    end
+
+    it "will only append valid beats" do
+      @bb.append("deep Mississippi")
+
+      expect(@bb.all).to eq("deep")
+    end
   end
 
-  it "can prepend beats" do
-    bb = BeatBox.new("deep")
-    bb.prepend("tee tee tee")
+  context "#prepend" do
+    it "can prepend beats to an existing LinkedList" do
+      @bb.append("deep")
 
-    expect(bb.all).to eq("tee tee tee deep")
+      expect(@bb.all).to eq("deep")
+      expect(@bb.count).to eq(1)
+      
+      @bb.prepend("tee tee tee")
+      
+      expect(@bb.all).to eq("tee tee tee deep")
+      expect(@bb.count).to eq(4)
+    end
+
+    it "can prepend beats to an empty LinkedList" do
+      @bb.prepend("tee tee tee")
+      
+      expect(@bb.all).to eq("tee tee tee")
+      expect(@bb.count).to eq(3)
+    end
   end
 
-  it "has a default playback rate of 500" do
-    bb = BeatBox.new("deep dop dop deep")
+  context "playback rate" do
+    it "has a default playback rate of 500" do
+      expect(@bb.rate).to eq(500)
+    end
 
-    expect(bb.rate).to eq(500)
+    it "can change its playback rate" do
+      @bb.rate = 100
+      
+      expect(@bb.rate).to eq(100)
+    end
+
+    it "can reset the playback rate to 500" do
+      @bb.rate = 100
+      
+      expect(@bb.rate).to eq(100)
+      
+      @bb.reset_rate
+      
+      expect(@bb.rate).to eq(500)
+    end
   end
+
   
-  it "can change playback rate" do
-    bb = BeatBox.new("deep dop dop deep")
-    bb.rate = 100
-    
-    expect(bb.rate).to eq(100)
-  end
 
-  it "uses Boing as a default voice" do
-    bb = BeatBox.new("deep dop dop deep")
+  context "playback voice" do
+    it "uses Boing as a default voice" do
+      expect(@bb.voice).to eq("Boing")
+    end
 
-    expect(bb.voice).to eq("Boing")
-  end
+    it "can change voices" do
+      @bb.voice = "Daniel"
   
-  it "can change voices" do
-    bb = BeatBox.new("deep dop dop deep")
-    bb.voice = "Daniel"
+      expect(@bb.voice).to eq("Daniel")
+    end
 
-    expect(bb.voice).to eq("Daniel")
-  end
+    it "can reset the voice" do
+      @bb.voice = "Daniel"
+    
+      expect(@bb.voice).to eq("Daniel")
   
-  it "can reset the playback rate" do
-    bb = BeatBox.new("deep dop dop deep")
-    bb.rate = 100
-    
-    expect(bb.rate).to eq(100)
-    
-    bb.reset_rate
-    
-    expect(bb.rate).to eq(500)
-  end
-
-  it "can reset the voice" do
-    bb = BeatBox.new("deep dop dop deep")
-    bb.voice = "Daniel"
+      @bb.reset_voice
   
-    expect(bb.voice).to eq("Daniel")
-
-    bb.reset_voice
-
-    expect(bb.voice).to eq("Boing")
+      expect(@bb.voice).to eq("Boing")
+    end
   end
 end
