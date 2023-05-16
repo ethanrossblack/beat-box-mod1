@@ -4,6 +4,10 @@ require "./lib/node"
 require "rspec"
 
 describe BeatBox do
+  before(:each) do
+    @bb = BeatBox.new
+  end
+  
   it "exists" do
     bb = BeatBox.new
 
